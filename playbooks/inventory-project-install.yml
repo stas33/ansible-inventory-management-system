@@ -1,5 +1,5 @@
 ---
-- hosts: azurehosts
+- hosts: deploymentservers
 
   vars:
     app_dir: "{{user_dir}}/django-project"
@@ -45,11 +45,11 @@
     changed_when: true
 
   - name: copy env file
-    shell : "cp {{app_dir}}/inventoryproject/inventoryproject/.env.example {{app_dir}}/inventoryproject/inventoryproject/.env"
+    shell : "cp {{app_dir}}/inventoryproject/.env.example {{app_dir}}/inventoryproject/.env"
 
   - name: populate  ~/.env
       lineinfile:
-      dest: "{{app_dir}}/inventoryproject/inventoryproject/.env"
+      dest: "{{app_dir}}/inventoryproject/.env"
       state: present
       regexp: "^{{item.key}}="
       line: "{{item.key}}='{{item.value}}'"
@@ -63,7 +63,7 @@
 
   - name: add ip in django ALLOWED_HOSTS
     lineinfile:
-      dest: "{{app_dir}}/inventoryproject/inventoryproject/settings.py"
+      dest: "{{app_dir}}/inventoryproject/settings.py"
       regexp: "^ALLOWED_HOSTS ="
       line: "ALLOWED_HOSTS = {{ansible_all_ipv4_addresses}}"
       state: present
@@ -95,7 +95,7 @@
     - name: make migrations
       django_manage:
         command: "{{ item }}"
-        project_path: "{{app_dir}}/inventoryproject"
+        project_path: "{{app_dir}}"
         virtualenv: "{{app_dir}}/env"
       with_items:
         - makemigrations
