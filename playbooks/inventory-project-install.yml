@@ -47,7 +47,7 @@
   - name: copy env file
     shell : "cp {{app_dir}}/inventoryproject/.env.example {{app_dir}}/inventoryproject/.env"
 
-  - name: populate  ~/.env
+  - name: populate ~/.env
     lineinfile:
       dest: "{{app_dir}}/inventoryproject/.env"
       state: present
@@ -68,12 +68,11 @@
       line: "ALLOWED_HOSTS = {{ansible_all_ipv4_addresses}}"
       state: present
 
-
   - name: install and activate virtual environment
     block:
     - name: setup virtual environment
       pip:
-        requirements: "{{app_dir}}/inventoryproject/requirements.txt"
+        requirements: "{{app_dir}}/requirements.txt"
         virtualenv: "{{app_dir}}/env"
         virtualenv_python: python3
     rescue:
@@ -88,7 +87,7 @@
 
     - name: setup virtual environment
       pip:
-        requirements: "{{app_dir}}/inventoryproject/requirements.txt"
+        requirements: "{{app_dir}}/requirements.txt"
         virtualenv: "{{app_dir}}/env"
         virtualenv_python: python3
 
@@ -100,7 +99,6 @@
       with_items:
         - makemigrations
         - migrate
-
 
     - name: copy django service file
       template:
