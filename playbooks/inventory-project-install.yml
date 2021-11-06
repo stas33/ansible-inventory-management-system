@@ -73,7 +73,7 @@
     block:
     - name: setup virtual environment
       pip:
-        requirements: "{{app_dir}}/requirements.txt"
+        requirements: "{{app_dir}}/inventoryproject/requirements.txt"
         virtualenv: "{{app_dir}}/env"
         virtualenv_python: python3
     rescue:
@@ -88,7 +88,7 @@
 
     - name: setup virtual environment
       pip:
-        requirements: "{{app_dir}}/requirements.txt"
+        requirements: "{{app_dir}}/inventoryproject/requirements.txt"
         virtualenv: "{{app_dir}}/env"
         virtualenv_python: python3
 
