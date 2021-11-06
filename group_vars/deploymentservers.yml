@@ -1,5 +1,5 @@
 user_dir: "/home/jenkins"
-app_port: 5000
+app_port: 8000
 service:
   workingdir: "{{user_dir}}/django-project"
   execstart: "{{user_dir}}/django-project/env/bin/gunicorn --access-logfile - --workers 3 --bind 0.0.0.0:8000 inventoryproject.wsgi:application"
@@ -14,9 +14,9 @@ app:
   env:
     SQLALCHEMY_DATABASE_URI: postgresql://demouser:pass123@db01/demodb
     SQLALCHEMY_TRACK_MODIFICATIONS: False
-    SECRET_KEY: sfvgbrh212131
+    SECRET_KEY: django-insecure-&8_f40u7o&sv_xh%=z%k4*!f@o_m!z3ct3edptu@&n$9k8d-1^
 
 django:
   env:
-    SECRET_KEY: 'sfvgbrh212131'
+    SECRET_KEY: 'django-insecure-&8_f40u7o&sv_xh%=z%k4*!f@o_m!z3ct3edptu@&n$9k8d-1^'
     DATABASE_URL: 'postgresql://demouser:pass123@db01/demodb'
