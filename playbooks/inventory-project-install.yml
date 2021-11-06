@@ -48,11 +48,11 @@
     shell : "cp {{app_dir}}/inventoryproject/.env.example {{app_dir}}/inventoryproject/.env"
 
   - name: populate  ~/.env
-      lineinfile:
+    lineinfile:
       dest: "{{app_dir}}/inventoryproject/.env"
       state: present
       regexp: "^{{item.key}}="
-      line: "{{item.key}}'='{{item.value}}"
+      line: "{{item.key}}='{{item.value}}'"
     with_items:
       - "{{django.env | dict2items}}"
 
