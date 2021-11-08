@@ -44,6 +44,11 @@
       dest: "{{app_dir}}"
     changed_when: true
 
+  - name: Make manage.py executable
+    file:
+      path: "{{ app_dir }}/manage.py"
+      mode: 0777
+
   - name: copy env file
     shell : "cp {{app_dir}}/inventoryproject/.env.example {{app_dir}}/inventoryproject/.env"
 
@@ -94,7 +99,7 @@
     - name: make migrations
       django_manage:
         command: "{{ item }}"
-        project_path: "{{app_dir}}/manage.py"
+        project_path: "{{app_dir}}"
         virtualenv: "{{app_dir}}/env"
         settings: "inventoryproject.settings"
       with_items:
