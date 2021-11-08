@@ -107,10 +107,10 @@
 #        - migrate
 
     - name: make migrations
-      shell : "{{virtualenv_python}} {{app_dir}}/manage.py makemigrations"
+      shell : "python3 {{app_dir}}/manage.py makemigrations"
 
     - name: migrate
-      shell : "{{virtualenv_python}} {{app_dir}}/manage.py migrate"
+      shell : "python3 {{app_dir}}/manage.py migrate"
 
     - name: copy django service file
       template:
