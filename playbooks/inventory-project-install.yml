@@ -150,7 +150,7 @@
         state: link
       notify: restart nginx
 
-#    - name: enable django site in nginx
+#    - name: enable djangossl site in nginx
 #      file:
 #        src: "/etc/nginx/sites-available/djangossl"
 #        dest: "/etc/nginx/sites-enabled/djangossl"
