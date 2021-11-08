@@ -1,9 +1,10 @@
 [Unit]
 Description=gunicorn daemon
+Requires=gunicorn.socket
 After=network.target
 
 [Service]
-User=jenkins
+User=root
 Group=www-data
 WorkingDirectory={{djangoservice.workingdir}}
 ExecStart={{djangoservice.execstart}}
