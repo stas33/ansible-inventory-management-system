@@ -94,9 +94,9 @@
     - name: make migrations
       django_manage:
         command: "{{ item }}"
-        project_path: "{{app_dir}}"
+        project_path: "{{app_dir}}/manage.py"
         virtualenv: "{{app_dir}}/env"
-        settings: "{{app_dir}}/inventoryproject/settings.py"
+        settings: "inventoryproject.settings"
       with_items:
         - makemigrations
         - migrate
