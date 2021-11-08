@@ -96,31 +96,16 @@
         virtualenv: "{{app_dir}}/env"
         virtualenv_python: python3
 
-    - name: make migrations
+    - name: migrations
       django_manage:
-        command: makemigrations
+        command: "{{ item }}"
         project_path: "{{ app_dir }}"
         virtualenv: "{{ app_dir }}/env"
         python_path: "/usr/bin/python3"
-        #settings: inventoryproject.settings
-
-    - name: migrate
-      django_manage:
-        command: migrate
-        project_path: "{{ app_dir }}"
-        virtualenv: "{{ app_dir }}/env"
-        python_path: "/usr/bin/python3"
-        #settings: inventoryproject.settings
-
-#      with_items:
-#        - makemigrations
-#        - migrate
-
-#    - name: make migrations
-#      shell : "python3 {{app_dir}}/manage.py makemigrations"
-#
-#    - name: migrate
-#      shell : "python3 {{app_dir}}/manage.py migrate"
+        settings: "{{app_dir}}/inventoryproject/settings.py"
+      with_items:
+        - makemigrations
+        - migrate
 
     - name: copy django service file
       template:
