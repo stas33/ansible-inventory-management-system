@@ -1,12 +1,12 @@
-user_dir: "/root"
+user_dir: "/home/jenkins"
 app_port: 8000
 service:
   workingdir: "{{user_dir}}/django-project"
-  execstart: "{{user_dir}}/django-project/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock inventoryproject.wsgi:application"
+  execstart: "{{user_dir}}/django-project/env/bin/gunicorn --access-logfile - --workers 3 --bind 0.0.0.0:8000 inventoryproject.wsgi:application"
 
 djangoservice:
   workingdir: "{{user_dir}}/django-project"
-  execstart: "{{user_dir}}/django-project/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock inventoryproject.wsgi:application"
+  execstart: "{{user_dir}}/django-project/env/bin/gunicorn --access-logfile - --workers 3 --bind 0.0.0.0:8000 inventoryproject.wsgi:application"
 
 
 
