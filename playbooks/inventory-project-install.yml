@@ -134,13 +134,13 @@
         dest: "/etc/nginx/sites-available/djangossl"
 
 
-    - name: copy certificates
-      copy:
-        src: "{{item}}"
-        dest: /etc/ssl/private/
-      with_items:
-        - ../files/certs/server.crt
-        - ../files/certs/server.key
+#    - name: copy certificates
+#      copy:
+#        src: "{{item}}"
+#        dest: /etc/ssl/private/
+#      with_items:
+#        - ../files/certs/server.crt
+#        - ../files/certs/server.key
 
 
     - name: enable django site in nginx
@@ -150,12 +150,12 @@
         state: link
       notify: restart nginx
 
-    - name: enable django site in nginx
-      file:
-        src: "/etc/nginx/sites-available/djangossl"
-        dest: "/etc/nginx/sites-enabled/djangossl"
-        state: link
-      notify: restart nginx
+#    - name: enable django site in nginx
+#      file:
+#        src: "/etc/nginx/sites-available/djangossl"
+#        dest: "/etc/nginx/sites-enabled/djangossl"
+#        state: link
+#      notify: restart nginx
 
     - name: de-activate default nginx site
       file:
