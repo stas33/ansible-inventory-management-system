@@ -97,20 +97,20 @@
         virtualenv_python: python3
 
     - name: make migrations
-      django_manage:
+      community.general.django_manage:
         command: makemigrations
-        project_path: "{{app_dir}}"
-        virtualenv: "{{app_dir}}/env"
+        project_path: "{{ app_dir }}"
+        virtualenv: "{{ app_dir }}/env"
         python_path: "/usr/bin/python3"
-        settings: inventoryproject.settings
+        #settings: inventoryproject.settings
 
     - name: migrate
-      django_manage:
+      community.general.django_manage:
         command: migrate
-        project_path: "{{app_dir}}"
-        virtualenv: "{{app_dir}}/env"
+        project_path: "{{ app_dir }}"
+        virtualenv: "{{ app_dir }}/env"
         python_path: "/usr/bin/python3"
-        settings: inventoryproject.settings
+        #settings: inventoryproject.settings
 
 #      with_items:
 #        - makemigrations
