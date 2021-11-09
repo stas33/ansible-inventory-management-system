@@ -2,7 +2,7 @@ server {
     listen 80;
     client_max_body_size 4G;
 
-    server_name 13.80.177.112;
+    server_name _;
     location = /favicon.ico { access_log off; log_not_found off; }
     location  /static/ {
         root {{user_dir}}/django-project;
