@@ -5,7 +5,7 @@ server {
     server_name 13.80.177.112;
     location = /favicon.ico { access_log off; log_not_found off; }
     location  /static/ {
-        root {{user_dir}}/django-project/static;
+        root {{user_dir}}/django-project;
     }
     location / {
       proxy_set_header Host $http_host;
@@ -13,7 +13,7 @@ server {
       proxy_set_header X-Forwarded-Proto $scheme;
       proxy_redirect off;
       proxy_buffering off;
-      proxy_pass http://unix:/run/gunicorn.sock;
+      proxy_pass http://localhost:{{app_port}};
     }
 
   }
