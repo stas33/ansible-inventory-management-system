@@ -141,14 +141,9 @@
         dest: "/etc/nginx/sites-available/djangossl"
 
     - name: copy gunicorn socket file
-      file:
+      template:
         src: ../files/django/gunicorn.socket.j2
-        dest: "/etc/systemd/system/sockets.target.wants/gunicorn.socket"
-        group: root
-        owner: root
-        mode: '1777'
-        state: link
-        force: yes
+        dest: "/etc/systemd/system/gunicorn.socket"
 
 #    - name: copy certificates
 #      copy:
@@ -162,6 +157,10 @@
         src: "/etc/systemd/system/sockets.target.wants/gunicorn.socket"
         dest: "/etc/systemd/system/gunicorn.socket"
         state: link
+        owner: root
+        group: root
+        mode: '1777'
+        force: yes
       notify: restart socket
 
     - name: enable django site in nginx
