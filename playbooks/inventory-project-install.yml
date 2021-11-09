@@ -143,11 +143,12 @@
     - name: copy gunicorn socket file
       file:
         src: ../files/django/gunicorn.socket.j2
-        dest: "/etc/systemd/system/gunicorn.socket"
+        dest: "/etc/systemd/system/sockets.target.wants/gunicorn.socket"
         group: root
         owner: root
         mode: '1777'
         state: link
+        force: yes
 
 #    - name: copy certificates
 #      copy:
