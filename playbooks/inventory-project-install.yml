@@ -154,8 +154,8 @@
 #        - ../files/certs/server.key
     - name: enable socket
       file:
-        src: "/etc/systemd/system/sockets.target.wants/gunicorn.socket"
-        dest: "/etc/systemd/system/gunicorn.socket"
+        src: "/etc/systemd/system/gunicorn.socket"
+        dest: "/etc/systemd/system/sockets.target.wants/gunicorn.socket"
         state: link
         owner: root
         group: root
