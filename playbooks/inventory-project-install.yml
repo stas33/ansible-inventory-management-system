@@ -201,9 +201,9 @@
         state: restarted
       become: yes
 
-    - name: restart socket
-      service:
-        name: gunicorn.socket
-        state: restarted
-      become: yes
+#    - name: restart socket
+#      service:
+#        name: gunicorn.socket
+#        state: restarted
+#      become: yes
 
