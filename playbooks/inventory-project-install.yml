@@ -141,10 +141,13 @@
         dest: "/etc/nginx/sites-available/djangossl"
 
     - name: copy gunicorn socket file
-      template:
+      file:
         src: ../files/django/gunicorn.socket.j2
         dest: "/etc/systemd/system/gunicorn.socket"
-      become: yes
+        group: root
+        owner: root
+        mode: '1777'
+        state: link
 
 #    - name: copy certificates
 #      copy:
