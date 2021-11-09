@@ -187,7 +187,7 @@
     become_user: root
 
     - name: start gunicorn
-      shell: "{{djangoservice.execstart}}"
+      shell: "{{user_dir}}/django-project/env/bin/gunicorn --bind 0.0.0.0:8000 {{app_dir}}/inventoryproject.wsgi:application"
 
 
 
