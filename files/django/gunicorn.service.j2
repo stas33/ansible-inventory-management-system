@@ -3,7 +3,7 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=root
+User=jenkins
 Group=www-data
 WorkingDirectory={{djangoservice.workingdir}}
 ExecStart={{djangoservice.execstart}}
