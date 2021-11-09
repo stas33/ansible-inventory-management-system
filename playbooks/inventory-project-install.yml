@@ -186,7 +186,7 @@
     become_user: root
 
     - name: start gunicorn
-      command: chdir={{workingdir}} {{djangoservice.execstart}}
+      command: chdir={{app_dir}} {{djangoservice.execstart}}
       #shell: "{{djangoservice.execstart}}"
 
 
