@@ -182,12 +182,12 @@
         path: /etc/nginx/sites-enabled/default
         state: absent
       notify: restart nginx
+
     become: yes
     become_user: root
 
     - name: start gunicorn
-      command: chdir={{app_dir}} {{djangoservice.execstart}}
-      #shell: "{{djangoservice.execstart}}"
+      shell: "{{djangoservice.execstart}}"
 
 
 
