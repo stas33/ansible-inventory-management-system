@@ -70,7 +70,7 @@
     lineinfile:
       dest: "{{app_dir}}/inventoryproject/settings.py"
       regexp: "^ALLOWED_HOSTS ="
-      line: "ALLOWED_HOSTS = {{ansible_host}}"
+      line: "ALLOWED_HOSTS = {{host_ip}}"
       state: present
 
   - name: install and activate virtual environment

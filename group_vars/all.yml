@@ -1,1 +1,2 @@
 ansible_python_interpreter: /usr/bin/python3
+host_ip: "['13.80.177.112']"
