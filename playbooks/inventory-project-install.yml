@@ -188,7 +188,8 @@
 
 #    - name: start gunicorn
 #      shell: "{{user_dir}}/django-project/env/bin/gunicorn --bind 0.0.0.0:8000 {{app_dir}}/inventoryproject.wsgi:application"
-
+    - name: start gunicorn
+      shell: "gunicorn --bind 0.0.0.0:8000 {{app_dir}}/inventoryproject.wsgi:application"
 
 
   handlers:
