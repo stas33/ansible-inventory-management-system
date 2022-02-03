@@ -4,7 +4,7 @@
   vars:
     app_dir: "{{user_dir}}/django-project"
     git_repo_url: "https://github.com/stas33/inventory-management-project.git"
-    git_repo_branch: "test1"
+    git_repo_branch: "master"
 
   tasks:
 
@@ -140,30 +140,6 @@
         src: ../files/nginx/demo.https.nginx.j2
         dest: "/etc/nginx/sites-available/djangossl"
 
-#    - name: copy gunicorn socket file
-#      template:
-#        src: ../files/django/gunicorn.socket.j2
-#        dest: "/etc/systemd/system/gunicorn.socket"
-
-#    - name: copy certificates
-#      copy:
-#        src: "{{item}}"
-#        dest: /etc/ssl/private/
-#      with_items:
-#        - ../files/certs/server.crt
-#        - ../files/certs/server.key
-
-#    - name: enable socket
-#      file:
-#        src: "/etc/systemd/system/gunicorn.socket"
-#        dest: "/etc/systemd/system/sockets.target.wants/gunicorn.socket"
-#        state: link
-#        owner: root
-#        group: root
-#        mode: '1777'
-#        force: yes
-#      notify: restart socket
-
     - name: enable django site in nginx
       file:
         src: "/etc/nginx/sites-available/django"
@@ -171,12 +147,6 @@
         state: link
       notify: restart nginx
 
-#    - name: enable djangossl site in nginx
-#      file:
-#        src: "/etc/nginx/sites-available/djangossl"
-#        dest: "/etc/nginx/sites-enabled/djangossl"
-#        state: link
-#      notify: restart nginx
 
     - name: de-activate default nginx site
       file:
